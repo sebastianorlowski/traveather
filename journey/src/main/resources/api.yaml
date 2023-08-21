@@ -1,0 +1,155 @@
+openapi: 3.0.3
+
+servers:
+  - url: https://localhost:8080/v1/api
+
+info:
+  description: 'module: Journey'
+  version: '1.0.0'
+  title: 'Traveather'
+
+tags:
+  - name: Journey
+
+paths:
+  /journey/list:
+    get:
+      operationId: retrieveJourneyList
+      summary: Retrieve journeys list
+      description: It will return all journey assigned to sign in user
+      tags:
+        - Journey
+      responses:
+        200:
+          description: Journeys list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Journey'
+              example:
+                id: 'cce62038-ea9a-4440-9e22-a2c9eccd22d5'
+                name: 'Trip around the world'
+                createdAt: '2022-10-22T23:00:01Z'
+                createdBy: 'admintest'
+                modifiedAt: '2022-10-22T23:00:02Z'
+                modifiedBy: 'admintest'
+                archived: 'false'
+                description: 'This is first journey'
+  ### add waypoints...
+  /journey/{id}:
+    get:
+      operationId: retrieveJourney
+      summary: Retrieve journey
+      description: It will return specified journey by id.
+      tags:
+        - Journey
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 'cce62038-ea9a-4440-9e22-a2c9eccd22d5'
+      responses:
+        200:
+          description: Journey
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Journey'
+
+    put:
+      operationId: updateOrCreateJourney
+      summary: Update or create journey
+      description: Journey will be updated in case when id exists, otherwise it will create new journey.
+      tags:
+        - Journey
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 'cce62038-ea9a-4440-9e22-a2c9eccd22d5'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Journey'
+            example:
+              id: 'cce62038-ea9a-4440-9e22-a2c9eccd22d5'
+              name: 'Trip around the world'
+              archived: 'false'
+              description: 'This is first journey'
+      responses:
+        200:
+          description: Succesfully updated or created journey
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Journey'
+
+  /journey:
+    post:
+      operationId: createJourney
+      summary: Create Journey
+      description: It will create journey if some validation requirements will correct.
+      tags:
+        - Journey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Journey'
+      responses:
+        200:
+          description: Successfully created journey
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Journey'
+
+components:
+  schemas:
+    Journey:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: string
+          maxLength: 64
+        name:
+          type: string
+          maxLength: 128
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        createdBy:
+          type: string
+          readOnly: true
+        modifiedAt:
+          type: string
+          format: date-time
+          readOnly: true
+        archived:
+          type: boolean
+          default: false
+        description:
+          type: string
+          maxLength: 1024
+    ### Add waypoints
+
+    JourneyList:
+      allOf:
+        - type: object
+          required:
+            - items
+          properties:
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/Journey'
