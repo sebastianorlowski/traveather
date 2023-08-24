@@ -1,0 +1,192 @@
+openapi: 3.0.3
+
+servers:
+  - url: https://localhost:8080/v1/api
+
+info:
+  description: 'module: Waypoint'
+  version: '1.0.0'
+  title: 'Traveather'
+
+tags:
+  - name: Journey
+
+paths:
+  /waypoint/list:
+    get:
+      operationId: retrieveWaypointsList
+      summary: Retrieve waypoints list
+      description: It will return all waypoints assigned to sign in user
+      tags:
+        - Waypoint
+      responses:
+        200:
+          description: Waypoints list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Waypoint'
+              example:
+
+  /waypoint/{id}:
+    get:
+      operationId: retrieveWaypoint
+      summary: Retrieve waypoint
+      description: It will return specified waypoint by id.
+      tags:
+        - Waypoint
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 'cce62038-ea9a-4440-9e22-a2c9eccd22d5'
+      responses:
+        200:
+          description: Waypoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Waypoint'
+
+    put:
+      operationId: updateOrCreateWaypoint
+      summary: Update or create waypoint
+      description: Waypoint will be updated in case when id exists, otherwise it will create new waypoint.
+      tags:
+        - Waypoint
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 'cce62038-ea9a-4440-9e22-a2c9eccd22d5'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Waypoint'
+            example:
+      responses:
+        200:
+          description: Succesfully updated or created waypoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Waypoint'
+
+  /waypoint:
+    post:
+      operationId: createWaypoint
+      summary: Create Waypoint
+      description: It will create waypoint if some validation requirements will correct.
+      tags:
+        - Waypoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Waypoint'
+      responses:
+        200:
+          description: Successfully created waypoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Waypoint'
+
+components:
+  schemas:
+    Waypoint:
+      type: object
+      required:
+        - name
+        - destination
+      properties:
+        id:
+          type: string
+          maxLength: 64
+        name:
+          type: string
+          maxLength: 128
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        createdBy:
+          type: string
+          readOnly: true
+        modifiedAt:
+          type: string
+          format: date-time
+          readOnly: true
+        archived:
+          type: boolean
+          default: false
+        description:
+          type: string
+          maxLength: 1024
+        destination:
+          $ref: '#/components/schemas/Destination'
+
+    Destination:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 1024
+        latitude:
+          type: number
+          maxLength: 16
+        longitude:
+          type: number
+          maxLength: 16
+        country:
+          type: string
+          maxLength: 128
+        region:
+          type: string
+          maxLength: 128
+        city:
+          type: string
+          maxLength: 128
+        street:
+          type: string
+          maxLength: 128
+        info:
+          type: string
+          maxLength: 1024
+        items:
+          $ref: '#/components/schemas/Item'
+
+    Item:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          maxLength: 128
+        description:
+          type: string
+          maxLength: 1024
+
+    WaypointList:
+      allOf:
+        - type: object
+          required:
+            - items
+          properties:
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/Waypoint'

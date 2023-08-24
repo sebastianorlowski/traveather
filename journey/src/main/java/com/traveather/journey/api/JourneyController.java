@@ -20,8 +20,8 @@ public class JourneyController implements JourneyApi {
     }
 
     @Override
-    public ResponseEntity<List<Journey>> retrieveJourneyList() {
-        return JourneyApi.super.retrieveJourneyList();
+    public ResponseEntity<List<Journey>> retrieveJourneysList() {
+        return JourneyApi.super.retrieveJourneysList();
     }
 
     @Override

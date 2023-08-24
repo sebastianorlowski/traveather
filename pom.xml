@@ -15,6 +15,7 @@
         <module>common</module>
         <module>journey</module>
         <module>application</module>
+        <module>waypoint</module>
     </modules>
 
     <groupId>com.traveather</groupId>

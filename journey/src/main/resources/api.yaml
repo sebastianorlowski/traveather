@@ -14,7 +14,7 @@ tags:
 paths:
   /journey/list:
     get:
-      operationId: retrieveJourneyList
+      operationId: retrieveJourneysList
       summary: Retrieve journeys list
       description: It will return all journey assigned to sign in user
       tags:
