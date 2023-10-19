@@ -16,6 +16,7 @@
         <module>journey</module>
         <module>application</module>
         <module>waypoint</module>
+        <module>identity_provider</module>
     </modules>
 
     <groupId>com.traveather</groupId>
@@ -27,16 +28,17 @@
         <start-class>com.traveather.CoreApplication</start-class>
         <java.version>17</java.version>
         <openapi-generator.version>6.6.0</openapi-generator.version>
-        <spring-jpa.version>3.1.2</spring-jpa.version>
         <mysql.version>8.0.33</mysql.version>
-        <project-lombok.version>1.18.28</project-lombok.version>
         <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
         <swagger-parser.version>2.1.16</swagger-parser.version>
         <testcontainers.version>1.18.3</testcontainers.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
     </properties>
 
     <dependencies>
-        <!-- Spring -->
+
+        <!-- Child dependencies -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -49,6 +51,24 @@
         </dependency>
 
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- Parent dependencies -->
+
+        <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>openapi-generator</artifactId>
             <version>${openapi-generator.version}</version>
@@ -58,12 +78,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${project-lombok.version}</version>
         </dependency>
 
         <dependency>
@@ -79,10 +93,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>testcontainers</artifactId>
-            <version>${testcontainers.version}</version>
-            <scope>test</scope>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
         </dependency>
     </dependencies>
 

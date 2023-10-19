@@ -1,0 +1,52 @@
+openapi: 3.0.3
+
+servers:
+  - url: https://localhost:8080/v1/api
+
+info:
+  description: 'module: User'
+  version: '1.0.0'
+  title: 'Traveather'
+
+tags:
+  - name: User
+
+paths:
+  /user:
+    post:
+      operationId: createUser
+      summary: Create User
+      description: It will create user if some validation requirements is correct.
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        200:
+          description: Successfully created user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - login
+        - password
+        - username
+      properties:
+        login:
+          type: string
+          maxLength: 32
+        password:
+          type: string
+          maxLength: 32
+        usernmame:
+          type: string
+          maxLength: 32

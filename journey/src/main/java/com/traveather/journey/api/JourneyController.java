@@ -1,6 +1,7 @@
 package com.traveather.journey.api;
 
 import com.traveather.journey.api.model.Journey;
+import com.traveather.journey.service.JourneyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,9 +10,15 @@ import java.util.List;
 @RestController
 public class JourneyController implements JourneyApi {
 
+    private final JourneyService journeyService;
+
+    public JourneyController(JourneyService journeyService) {
+        this.journeyService = journeyService;
+    }
+
     @Override
     public ResponseEntity<Journey> createJourney(Journey journey) {
-        return JourneyApi.super.createJourney(journey);
+        return ResponseEntity.ok(journeyService.createJourney(journey));
     }
 
     @Override

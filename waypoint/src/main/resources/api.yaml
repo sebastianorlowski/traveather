@@ -83,7 +83,7 @@ paths:
     post:
       operationId: createWaypoint
       summary: Create Waypoint
-      description: It will create waypoint if some validation requirements will correct.
+      description: It will create waypoint if some validation requirements is correct.
       tags:
         - Waypoint
       requestBody:

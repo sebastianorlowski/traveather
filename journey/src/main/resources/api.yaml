@@ -95,7 +95,7 @@ paths:
     post:
       operationId: createJourney
       summary: Create Journey
-      description: It will create journey if some validation requirements will correct.
+      description: It will create journey if some validation requirements is correct.
       tags:
         - Journey
       requestBody:
@@ -135,13 +135,19 @@ components:
           type: string
           format: date-time
           readOnly: true
+        modifiedBy:
+          type: string
+          readOnly: true
         archived:
           type: boolean
           default: false
         description:
           type: string
           maxLength: 1024
-    ### Add waypoints
+        waypoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Waypoint'
 
     JourneyList:
       allOf:
@@ -153,3 +159,83 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Journey'
+
+    Waypoint:
+      type: object
+      required:
+        - name
+        - destination
+      properties:
+        id:
+          type: string
+          maxLength: 64
+        name:
+          type: string
+          maxLength: 128
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        createdBy:
+          type: string
+          readOnly: true
+        modifiedAt:
+          type: string
+          format: date-time
+          readOnly: true
+        archived:
+          type: boolean
+          default: false
+        description:
+          type: string
+          maxLength: 1024
+        destination:
+          $ref: '#/components/schemas/Destination'
+
+    Destination:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 1024
+        latitude:
+          type: number
+          maxLength: 16
+        longitude:
+          type: number
+          maxLength: 16
+        country:
+          type: string
+          maxLength: 128
+        region:
+          type: string
+          maxLength: 128
+        city:
+          type: string
+          maxLength: 128
+        street:
+          type: string
+          maxLength: 128
+        info:
+          type: string
+          maxLength: 1024
+        items:
+          $ref: '#/components/schemas/Item'
+
+    Item:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          maxLength: 128
+        description:
+          type: string
+          maxLength: 1024
+

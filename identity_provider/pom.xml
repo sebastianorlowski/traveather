@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>core</artifactId>
         <groupId>com.traveather</groupId>
@@ -10,15 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
 
-    <artifactId>journey</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.traveather</groupId>
-            <artifactId>identity_provider</artifactId>
-            <version>${version}</version>
-        </dependency>
-    </dependencies>
+    <artifactId>identity_provider</artifactId>
 
     <build>
         <plugins>
@@ -39,8 +30,8 @@
                             <generatorName>spring</generatorName>
                             <library>spring-boot</library>
                             <configOptions>
-                                <apiPackage>${project.groupId}.journey.api</apiPackage>
-                                <modelPackage>${project.groupId}.journey.api.model</modelPackage>
+                                <apiPackage>${project.groupId}.identity_provider.api</apiPackage>
+                                <modelPackage>${project.groupId}.identity_provider.api.model</modelPackage>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
                                 <java17>true</java17>
                                 <interfaceOnly>true</interfaceOnly>
@@ -52,4 +43,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
