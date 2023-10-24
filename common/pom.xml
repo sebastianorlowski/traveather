@@ -12,8 +12,6 @@
 
     <artifactId>common</artifactId>
 
-    <packaging>jar</packaging>
-
     <build>
         <plugins>
             <plugin>

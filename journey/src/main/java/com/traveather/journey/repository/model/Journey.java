@@ -1,8 +1,6 @@
 package com.traveather.journey.repository.model;
 
-import com.traveather.identity_provider.repository.model.User;
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -22,13 +20,13 @@ public class Journey {
     private String name;
 
     @Column(name = "created_by")
-    private User createdBy;
+    private String createdBy;
 
     @Column(name = "created_at")
     private OffsetDateTime createdAt;
 
-    @Column(name = "modified_by")
-    private User modifiedBy;
+    @Column(name = "modifiedBy")
+    private String modifiedBy;
 
     @Column(name = "modified_at")
     private OffsetDateTime modifiedAt;
@@ -54,10 +52,10 @@ public class Journey {
             this.createdAt = now;
         }
         if (this.createdBy == null) {
-            this.createdBy = new User();
+            this.createdBy = "admin";
         }
         this.modifiedAt = now;
-        this.modifiedBy = new User();
+        this.modifiedBy = "admin";
     }
 
     public Long getId() {
@@ -84,11 +82,11 @@ public class Journey {
         this.name = name;
     }
 
-    public User getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(User createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -100,11 +98,11 @@ public class Journey {
         this.createdAt = createdAt;
     }
 
-    public User getModifiedBy() {
+    public String getModifiedBy() {
         return modifiedBy;
     }
 
-    public void setModifiedBy(User modifiedBy) {
+    public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
 
