@@ -4,7 +4,7 @@ import com.traveather.journey.api.model.Journey;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface JourneyMapper {
 
     Journey asDto(com.traveather.journey.repository.model.Journey journey);

@@ -12,6 +12,26 @@
 
     <artifactId>application</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.traveather</groupId>
+            <artifactId>journey</artifactId>
+            <version>${version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.traveather</groupId>
+            <artifactId>identity_provider</artifactId>
+            <version>${version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.traveather</groupId>
+            <artifactId>waypoint</artifactId>
+            <version>${version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
