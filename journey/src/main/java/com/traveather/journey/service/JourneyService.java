@@ -34,9 +34,8 @@ public class JourneyService {
     }
 
     public Journey retrieveJourneyById(String id) {
-        Optional<com.traveather.journey.repository.model.Journey> journeyEntity =
-                journeyRepository.findJourneyByExternalId(UUID.fromString(id));
-        return journeyEntity.map(journeyMapper::asDto)
+        return journeyRepository.findJourneyByExternalId(UUID.fromString(id))
+                .map(journeyMapper::asDto)
                 .orElseThrow(() -> new RuntimeException("Journey with id {} not found."));
     }
 
