@@ -35,11 +35,11 @@ public class JourneyController implements JourneyApi {
 
     @Override
     public ResponseEntity<List<Journey>> retrieveJourneysList() {
-        return JourneyApi.super.retrieveJourneysList();
+        return ResponseEntity.ok(journeyService.retrieveAllJourneys());
     }
 
     @Override
     public ResponseEntity<Journey> updateOrCreateJourney(String id, Journey journey) {
-        return JourneyApi.super.updateOrCreateJourney(id, journey);
+        return ResponseEntity.ok(journeyService.createOrUpdateJourney(id, journey));
     }
 }
