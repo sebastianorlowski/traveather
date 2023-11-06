@@ -1,3 +1,9 @@
+<h2>Traveather</h2>
+
+Travel management application. You can create your journey with waypoints. The service will automatically set weather, currency, emergency calls and other informations to specified destination.
+
+TBD: Service will consume data from other services like weather-service, currency-service etc.
+
 <h3>Build application using Maven Deamon</h3>
 
 `mvnd clean install -T 3`
