@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -10,6 +9,8 @@
         <version>3.1.2</version>
         <relativePath/>
     </parent>
+
+    <packaging>pom</packaging>
 
     <modules>
         <module>common</module>
@@ -28,7 +29,7 @@
         <start-class>com.traveather.CoreApplication</start-class>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <java.version>17</java.version>
-        <openapi-generator.version>6.6.0</openapi-generator.version>
+        <openapi-generator.version>6.5.0</openapi-generator.version>
         <mysql.version>8.0.33</mysql.version>
         <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
         <swagger-parser.version>2.1.16</swagger-parser.version>
@@ -68,11 +69,6 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-
         <!-- Parent dependencies -->
 
         <dependency>
@@ -91,11 +87,11 @@
             </exclusions>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>mysql</groupId>-->
-<!--            <artifactId>mysql-connector-java</artifactId>-->
-<!--            <version>${mysql.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.openapitools</groupId>
@@ -105,8 +101,8 @@
 
         <dependency>
             <groupId>io.swagger.parser.v3</groupId>
-            <artifactId>swagger-parser</artifactId>
-            <version>${swagger-parser.version}</version>
+            <artifactId>swagger-parser-v3</artifactId>
+            <version>2.1.16</version>
             <exclusions>
                 <exclusion>
                     <groupId>io.swagger.core.v3</groupId>
@@ -146,11 +142,6 @@
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
             <plugin>
