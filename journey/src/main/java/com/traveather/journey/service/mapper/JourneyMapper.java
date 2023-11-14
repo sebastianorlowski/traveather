@@ -3,6 +3,7 @@ package com.traveather.journey.service.mapper;
 import com.traveather.journey.api.model.Journey;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingInheritanceStrategy;
 import org.mapstruct.MappingTarget;
 
 import java.util.List;

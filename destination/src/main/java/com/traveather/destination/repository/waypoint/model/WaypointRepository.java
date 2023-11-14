@@ -1,6 +1,5 @@
-package com.traveather.waypoint.repository.waypoint;
+package com.traveather.destination.repository.waypoint.model;
 
-import com.traveather.waypoint.repository.waypoint.model.Waypoint;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WaypointRepository extends JpaRepository<Long, Waypoint> {

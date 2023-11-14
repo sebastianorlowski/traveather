@@ -4,40 +4,40 @@ servers:
   - url: /api/v1
 
 info:
-  description: 'module: Waypoint'
+  description: 'module: Destination'
   version: '1.0.0'
   title: 'Traveather'
 
 tags:
-  - name: Waypoint
-    description: Waypoints management
+  - name: Destination
+    description: Destinations management
 
 paths:
-  /waypoint/list:
+  /destination/list:
     get:
-      operationId: retrieveWaypointsList
-      summary: Retrieve waypoints list
-      description: It will return all waypoints assigned to sign in user
+      operationId: retrieveDestinationsList
+      summary: Retrieve destinations list
+      description: It will return all destinations assigned to sign in user
       tags:
-        - Waypoint
+        - Destination
       responses:
         200:
-          description: Waypoints list
+          description: Destinations list
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Waypoint'
+                  $ref: '#/components/schemas/Destination'
               example:
 
-  /waypoint/{id}:
+  /destination/{id}:
     get:
-      operationId: retrieveWaypoint
-      summary: Retrieve waypoint
-      description: It will return specified waypoint by id.
+      operationId: retrieveDestination
+      summary: Retrieve destination
+      description: It will return specified destination by id.
       tags:
-        - Waypoint
+        - Destination
       parameters:
         - name: id
           in: path
@@ -47,18 +47,18 @@ paths:
             example: 'cce62038-ea9a-4440-9e22-a2c9eccd22d5'
       responses:
         200:
-          description: Waypoint
+          description: Destination
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Waypoint'
+                $ref: '#/components/schemas/Destination'
 
     put:
-      operationId: updateOrCreateWaypoint
-      summary: Update or create waypoint
-      description: Waypoint will be updated in case when id exists, otherwise it will create new waypoint.
+      operationId: updateOrCreateDestination
+      summary: Update or create destination
+      description: Destination will be updated in case when id exists, otherwise it will create new one.
       tags:
-        - Waypoint
+        - Destination
       parameters:
         - name: id
           in: path
@@ -70,43 +70,43 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Waypoint'
+              $ref: '#/components/schemas/Destination'
             example:
       responses:
         200:
-          description: Succesfully updated or created waypoint
+          description: Succesfully updated or created destination
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Waypoint'
+                $ref: '#/components/schemas/Destination'
 
-  /waypoint:
+  /destination:
     post:
-      operationId: createWaypoint
-      summary: Create Waypoint
-      description: It will create waypoint if some validation requirements is correct.
+      operationId: createDestination
+      summary: Create Destination
+      description: It will create destination if some validation requirements is correct.
       tags:
-        - Waypoint
+        - Destination
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Waypoint'
+              $ref: '#/components/schemas/Destination'
       responses:
         200:
-          description: Successfully created waypoint
+          description: Successfully created destination
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Waypoint'
+                $ref: '#/components/schemas/Destination'
 
 components:
   schemas:
-    Waypoint:
+    Destination:
       type: object
       required:
         - name
-        - destination
+        - waypoint
       properties:
         id:
           type: string
@@ -131,10 +131,10 @@ components:
         description:
           type: string
           maxLength: 1024
-        destination:
-          $ref: '#/components/schemas/Destination'
+        waypoint:
+          $ref: '#/components/schemas/Waypoint'
 
-    Destination:
+    Waypoint:
       type: object
       required:
         - name
@@ -181,7 +181,7 @@ components:
           type: string
           maxLength: 1024
 
-    WaypointList:
+    DestinationList:
       allOf:
         - type: object
           required:
@@ -190,4 +190,4 @@ components:
             items:
               type: array
               items:
-                $ref: '#/components/schemas/Waypoint'
+                $ref: '#/components/schemas/Destination'

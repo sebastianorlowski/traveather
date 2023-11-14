@@ -1,16 +1,13 @@
-package com.traveather.waypoint.repository.destination.model;
+package com.traveather.destination.repository.waypoint.model;
 
 import com.traveather.common.entity.AuditableEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import org.checkerframework.checker.units.qual.C;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "destinations")
-public class Destination extends AuditableEntity {
+@Table(name = "waypoints")
+public class Waypoint extends AuditableEntity {
 
     @Column(name = "description")
     private String description;

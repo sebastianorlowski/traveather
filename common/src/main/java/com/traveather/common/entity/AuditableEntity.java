@@ -15,19 +15,19 @@ import java.time.OffsetDateTime;
 @MappedSuperclass
 public abstract class AuditableEntity extends BaseEntity {
 
-    @CreatedDate
+//    @CreatedDate
     @Column(name = "created_at")
     private OffsetDateTime createdAt;
 
-    @LastModifiedDate
+//    @LastModifiedDate
     @Column(name = "modified_at")
     private OffsetDateTime modifiedAt;
 
-    @CreatedBy
+//    @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
 
-    @LastModifiedBy
+//    @LastModifiedBy
     @Column(name = "modified_by")
     private String modifiedBy;
 
