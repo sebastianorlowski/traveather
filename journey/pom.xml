@@ -17,6 +17,12 @@
             <artifactId>common</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.traveather</groupId>
+            <artifactId>destination</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

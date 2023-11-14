@@ -1,6 +1,7 @@
 package com.traveather.destination.repository.waypoint.model;
 
 import com.traveather.common.entity.AuditableEntity;
+import com.traveather.destination.repository.destination.model.Destination;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -32,6 +33,10 @@ public class Waypoint extends AuditableEntity {
 
     @Column(name = "info")
     private String info;
+
+    @ManyToOne
+    @JoinColumn(name = "destination_id")
+    private Destination destination;
 
     public String getDescription() {
         return description;
@@ -95,5 +100,13 @@ public class Waypoint extends AuditableEntity {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
     }
 }

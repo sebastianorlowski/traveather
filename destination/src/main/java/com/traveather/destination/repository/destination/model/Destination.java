@@ -15,12 +15,33 @@ public class Destination extends AuditableEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "created_by")
-    private String createdBy;
-
     @Column(name = "description")
     private String description;
 
-    @OneToMany()
+    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
     private List<Waypoint> waypoints;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Waypoint> getWaypoints() {
+        return waypoints;
+    }
+
+    public void setWaypoints(List<Waypoint> waypoints) {
+        this.waypoints = waypoints;
+    }
 }

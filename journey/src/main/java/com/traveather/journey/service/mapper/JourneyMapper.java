@@ -21,6 +21,7 @@ public interface JourneyMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "modifiedBy", ignore = true)
     @Mapping(target = "modifiedAt", ignore = true)
+    @Mapping(target = "destinations", ignore = true)
     com.traveather.journey.repository.model.Journey asEntity(Journey journey);
 
     default List<Journey> asListDto(List<com.traveather.journey.repository.model.Journey> journeyList) {
@@ -35,6 +36,7 @@ public interface JourneyMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "modifiedBy", ignore = true)
     @Mapping(target = "modifiedAt", ignore = true)
+    @Mapping(target = "destinations", ignore = true)
     void update(@MappingTarget com.traveather.journey.repository.model.Journey existingJourney,
                                                            com.traveather.journey.repository.model.Journey journey);
 }

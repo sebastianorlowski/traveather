@@ -1,9 +1,11 @@
 package com.traveather.journey.repository.model;
 
 import com.traveather.common.entity.AuditableEntity;
+import com.traveather.destination.repository.destination.model.Destination;
 import jakarta.persistence.*;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -19,10 +21,21 @@ public class Journey extends AuditableEntity {
     @Column(name = "archived")
     private boolean archived;
 
-//    @OneToMany
-//    @Column(name = "waypoints")
-//    private List<Waypoint> waypoints;
-//
+    @ManyToMany
+    @JoinTable(
+            name = "journey_destinations",
+            joinColumns = @JoinColumn(name = "journey_id"),
+            inverseJoinColumns = @JoinColumn(name = "destination_id")
+    )
+    private List<Destination> destinations;
+
+    public List<Destination> getDestinations() {
+        return destinations;
+    }
+
+    public void setDestinations(List<Destination> destinations) {
+        this.destinations = destinations;
+    }
 
     public String getName() {
         return name;

@@ -30,6 +30,28 @@ paths:
                 items:
                   $ref: '#/components/schemas/Destination'
               example:
+                  id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
+                  name: 'destination_name'
+                  createdAt:
+                  createdBy:
+                  modifiedAt:
+                  archived:
+                  description:
+                  waypoint:
+                    - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+                      name: 'waypoint_name'
+                      description: 'description_waypoint'
+                      latitude: '54.372158'
+                      longitude: '18.638306'
+                      country: 'Poland'
+                      region: 'Pomeranian'
+                      city: 'Gdansk'
+                      street: 'Grunwaldzka'
+                      info: 'this is info'
+                      items:
+                        - id:
+                          name: 'name'
+                          description: 'description'
 
   /destination/{id}:
     get:
@@ -52,6 +74,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Destination'
+              example:
+                id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
+                name: 'destination_name'
+                createdAt:
+                createdBy:
+                modifiedAt:
+                archived:
+                description:
+                waypoint:
+                  - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+                    name: 'waypoint_name'
+                    description: 'description_waypoint'
+                    latitude: '54.372158'
+                    longitude: '18.638306'
+                    country: 'Poland'
+                    region: 'Pomeranian'
+                    city: 'Gdansk'
+                    street: 'Grunwaldzka'
+                    info: 'this is info'
+                    items:
+                      - id:
+                        name: 'name'
+                        description: 'description'
 
     put:
       operationId: updateOrCreateDestination
@@ -72,6 +117,28 @@ paths:
             schema:
               $ref: '#/components/schemas/Destination'
             example:
+              id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
+              name: 'destination_name'
+              createdAt:
+              createdBy:
+              modifiedAt:
+              archived:
+              description:
+              waypoint:
+                - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+                  name: 'waypoint_name'
+                  description: 'description_waypoint'
+                  latitude: '54.372158'
+                  longitude: '18.638306'
+                  country: 'Poland'
+                  region: 'Pomeranian'
+                  city: 'Gdansk'
+                  street: 'Grunwaldzka'
+                  info: 'this is info'
+                  items:
+                    - id:
+                      name: 'name'
+                      description: 'description'
       responses:
         200:
           description: Succesfully updated or created destination
@@ -92,6 +159,29 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Destination'
+            example:
+              id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
+              name: 'destination_name'
+              createdAt:
+              createdBy:
+              modifiedAt:
+              archived:
+              description:
+              waypoint:
+                - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+                  name: 'waypoint_name'
+                  description: 'description_waypoint'
+                  latitude: '54.372158'
+                  longitude: '18.638306'
+                  country: 'Poland'
+                  region: 'Pomeranian'
+                  city: 'Gdansk'
+                  street: 'Grunwaldzka'
+                  info: 'this is info'
+                  items:
+                    - id:
+                      name: 'name'
+                      description: 'description'
       responses:
         200:
           description: Successfully created destination
@@ -142,6 +232,9 @@ components:
         id:
           type: string
           maxLength: 64
+        name:
+          type: string
+          maxLength: 128
         description:
           type: string
           maxLength: 1024
@@ -174,6 +267,9 @@ components:
       required:
         - name
       properties:
+        id:
+          type: string
+          maxLength: 64
         name:
           type: string
           maxLength: 128

@@ -38,7 +38,30 @@ paths:
                 modifiedBy: 'admintest'
                 archived: 'false'
                 description: 'This is first journey'
-  ### add waypoints...
+                destination:
+                  - id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
+                    name: 'destination_name'
+                    createdAt:
+                    createdBy:
+                    modifiedAt:
+                    archived:
+                    description:
+                    waypoint:
+                      - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+                        name: 'waypoint_name'
+                        description: 'description_waypoint'
+                        latitude: '54.372158'
+                        longitude: '18.638306'
+                        country: 'Poland'
+                        region: 'Pomeranian'
+                        city: 'Gdansk'
+                        street: 'Grunwaldzka'
+                        info: 'this is info'
+                        items:
+                          - id:
+                            name: 'name'
+                            description: 'description'
+
   /journey/{id}:
     get:
       operationId: retrieveJourney
@@ -52,7 +75,38 @@ paths:
           required: true
           schema:
             type: string
-            example: 'cce62038-ea9a-4440-9e22-a2c9eccd22d5'
+          example:
+            id: 'cce62038-ea9a-4440-9e22-a2c9eccd22d5'
+            name: 'Trip around the world'
+            createdAt: '2022-10-22T23:00:01Z'
+            createdBy: 'admintest'
+            modifiedAt: '2022-10-22T23:00:02Z'
+            modifiedBy: 'admintest'
+            archived: 'false'
+            description: 'This is first journey'
+            destination:
+              - id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
+                name: 'destination_name'
+                createdAt:
+                createdBy:
+                modifiedAt:
+                archived:
+                description:
+                waypoint:
+                  - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+                    name: 'waypoint_name'
+                    description: 'description_waypoint'
+                    latitude: '54.372158'
+                    longitude: '18.638306'
+                    country: 'Poland'
+                    region: 'Pomeranian'
+                    city: 'Gdansk'
+                    street: 'Grunwaldzka'
+                    info: 'this is info'
+                    items:
+                      - id:
+                        name: 'name'
+                        description: 'description'
       responses:
         200:
           description: Journey
@@ -82,8 +136,35 @@ paths:
             example:
               id: 'cce62038-ea9a-4440-9e22-a2c9eccd22d5'
               name: 'Trip around the world'
+              createdAt: '2022-10-22T23:00:01Z'
+              createdBy: 'admintest'
+              modifiedAt: '2022-10-22T23:00:02Z'
+              modifiedBy: 'admintest'
               archived: 'false'
               description: 'This is first journey'
+              destination:
+                - id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
+                  name: 'destination_name'
+                  createdAt:
+                  createdBy:
+                  modifiedAt:
+                  archived:
+                  description:
+                  waypoint:
+                    - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+                      name: 'waypoint_name'
+                      description: 'description_waypoint'
+                      latitude: '54.372158'
+                      longitude: '18.638306'
+                      country: 'Poland'
+                      region: 'Pomeranian'
+                      city: 'Gdansk'
+                      street: 'Grunwaldzka'
+                      info: 'this is info'
+                      items:
+                        - id:
+                          name: 'name'
+                          description: 'description'
       responses:
         200:
           description: Succesfully updated or created journey
@@ -104,6 +185,38 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Journey'
+            example:
+              id: 'cce62038-ea9a-4440-9e22-a2c9eccd22d5'
+              name: 'Trip around the world'
+              createdAt: '2022-10-22T23:00:01Z'
+              createdBy: 'admintest'
+              modifiedAt: '2022-10-22T23:00:02Z'
+              modifiedBy: 'admintest'
+              archived: 'false'
+              description: 'This is first journey'
+              destination:
+                - id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
+                  name: 'destination_name'
+                  createdAt:
+                  createdBy:
+                  modifiedAt:
+                  archived:
+                  description:
+                  waypoint:
+                    - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+                      name: 'waypoint_name'
+                      description: 'description_waypoint'
+                      latitude: '54.372158'
+                      longitude: '18.638306'
+                      country: 'Poland'
+                      region: 'Pomeranian'
+                      city: 'Gdansk'
+                      street: 'Grunwaldzka'
+                      info: 'this is info'
+                      items:
+                        - id:
+                          name: 'name'
+                          description: 'description'
       responses:
         200:
           description: Successfully created journey
@@ -145,10 +258,10 @@ components:
         description:
           type: string
           maxLength: 1024
-        waypoints:
+        destinations:
           type: array
           items:
-            $ref: '#/components/schemas/Waypoint'
+            $ref: '#/components/schemas/Destination'
 
     JourneyList:
       allOf:
@@ -161,11 +274,10 @@ components:
               items:
                 $ref: '#/components/schemas/Journey'
 
-    Waypoint:
+    Destination:
       type: object
       required:
         - name
-        - destination
       properties:
         id:
           type: string
@@ -190,10 +302,12 @@ components:
         description:
           type: string
           maxLength: 1024
-        destination:
-          $ref: '#/components/schemas/Destination'
+        waypoint:
+          type: array
+          items:
+            $ref: '#/components/schemas/Waypoint'
 
-    Destination:
+    Waypoint:
       type: object
       required:
         - name
@@ -226,7 +340,9 @@ components:
           type: string
           maxLength: 1024
         items:
-          $ref: '#/components/schemas/Item'
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
 
     Item:
       type: object
