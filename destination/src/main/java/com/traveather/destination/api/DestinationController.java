@@ -1,6 +1,7 @@
 package com.traveather.destination.api;
 
 import com.traveather.destination.api.model.Destination;
+import com.traveather.destination.service.DestinationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,23 +10,29 @@ import java.util.List;
 @RestController
 public class DestinationController implements DestinationApi {
 
+    private final DestinationService destinationService;
+
+    public DestinationController(DestinationService destinationService) {
+        this.destinationService = destinationService;
+    }
+
     @Override
     public ResponseEntity<Destination> createDestination(Destination destination) {
-        return DestinationApi.super.createDestination(destination);
+        return ResponseEntity.ok(destinationService.createDestination(destination));
     }
 
     @Override
     public ResponseEntity<Destination> retrieveDestination(String id) {
-        return DestinationApi.super.retrieveDestination(id);
+        return ResponseEntity.ok(destinationService.retrieveDestinationById(id));
     }
 
     @Override
     public ResponseEntity<List<Destination>> retrieveDestinationsList() {
-        return DestinationApi.super.retrieveDestinationsList();
+        return ResponseEntity.ok(destinationService.retrieveAllDestinations());
     }
 
     @Override
     public ResponseEntity<Destination> updateOrCreateDestination(String id, Destination destination) {
-        return DestinationApi.super.updateOrCreateDestination(id, destination);
+        return ResponseEntity.ok(destinationService.createOrUpdateDestination(id, destination));
     }
 }

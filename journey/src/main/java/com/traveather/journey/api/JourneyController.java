@@ -4,8 +4,6 @@ import com.traveather.journey.api.model.Journey;
 import com.traveather.journey.api.validation.JourneyValidator;
 import com.traveather.journey.service.JourneyService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

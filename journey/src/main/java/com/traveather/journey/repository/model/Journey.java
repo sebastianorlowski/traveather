@@ -1,12 +1,10 @@
 package com.traveather.journey.repository.model;
 
 import com.traveather.common.entity.AuditableEntity;
-import com.traveather.destination.repository.destination.model.Destination;
+import com.traveather.destination.repository.model.Destination;
 import jakarta.persistence.*;
 
-import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "journeys")

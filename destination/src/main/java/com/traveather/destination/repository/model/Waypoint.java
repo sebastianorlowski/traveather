@@ -1,7 +1,7 @@
-package com.traveather.destination.repository.waypoint.model;
+package com.traveather.destination.repository.model;
 
 import com.traveather.common.entity.AuditableEntity;
-import com.traveather.destination.repository.destination.model.Destination;
+import com.traveather.destination.repository.model.Destination;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;

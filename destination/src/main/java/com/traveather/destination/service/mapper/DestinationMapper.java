@@ -1,19 +1,18 @@
-package com.traveather.journey.service.mapper;
+package com.traveather.destination.service.mapper;
 
-import com.traveather.journey.api.model.Journey;
+import com.traveather.destination.api.model.Destination;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingInheritanceStrategy;
 import org.mapstruct.MappingTarget;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
-public interface JourneyMapper {
+public interface DestinationMapper {
 
     @Mapping(target = "id", source = "externalId")
-    Journey asDto(com.traveather.journey.repository.model.Journey journey);
+    Destination asDto(com.traveather.destination.repository.model.Destination destination);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "externalId", ignore = true)
@@ -21,12 +20,12 @@ public interface JourneyMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "modifiedBy", ignore = true)
     @Mapping(target = "modifiedAt", ignore = true)
-    // TODO: Extend destinations
-    @Mapping(target = "destinations", ignore = true)
-    com.traveather.journey.repository.model.Journey asEntity(Journey journey);
+    // TODO: Extend waypoints
+    @Mapping(target = "waypoints", ignore = true)
+    com.traveather.destination.repository.model.Destination asEntity(Destination destination);
 
-    default List<Journey> asListDto(List<com.traveather.journey.repository.model.Journey> journeyList) {
-        return journeyList.stream()
+    default List<Destination> asListDto(List<com.traveather.destination.repository.model.Destination> destinationList) {
+        return destinationList.stream()
                 .map(this::asDto)
                 .collect(Collectors.toList());
     }
@@ -37,8 +36,8 @@ public interface JourneyMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "modifiedBy", ignore = true)
     @Mapping(target = "modifiedAt", ignore = true)
-    // TODO: Extend destinations
-    @Mapping(target = "destinations", ignore = true)
-    void update(@MappingTarget com.traveather.journey.repository.model.Journey existingJourney,
-                com.traveather.journey.repository.model.Journey journey);
+    // TODO: Extend waypoints
+    @Mapping(target = "waypoints", ignore = true)
+    void update(@MappingTarget com.traveather.destination.repository.model.Destination existingDestination,
+                com.traveather.destination.repository.model.Destination destination);
 }

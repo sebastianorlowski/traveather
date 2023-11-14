@@ -1,11 +1,8 @@
-package com.traveather.destination.repository.destination.model;
+package com.traveather.destination.repository.model;
 
 import com.traveather.common.entity.AuditableEntity;
-import com.traveather.destination.repository.waypoint.model.Waypoint;
 import jakarta.persistence.*;
-import org.checkerframework.checker.units.qual.C;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
