@@ -11,6 +11,7 @@ TBD: Service will consume data from other services like weather-service, currenc
 - OpenAPI Generator 6.5.0
 - RabbitMQ
 - Docker
+- Liquibase
 
 Service uses <b>Contract First</b> approach with OpenAPI to define REST.
 Core module is the heart of project, which will manage the main operations and receive data from external sources(microservices).
