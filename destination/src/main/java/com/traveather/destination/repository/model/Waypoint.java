@@ -34,10 +34,6 @@ public class Waypoint extends AuditableEntity {
     @Column(name = "info")
     private String info;
 
-    @ManyToOne
-    @JoinColumn(name = "destination_id")
-    private Destination destination;
-
     public String getDescription() {
         return description;
     }
@@ -102,11 +98,4 @@ public class Waypoint extends AuditableEntity {
         this.info = info;
     }
 
-    public Destination getDestination() {
-        return destination;
-    }
-
-    public void setDestination(Destination destination) {
-        this.destination = destination;
-    }
 }

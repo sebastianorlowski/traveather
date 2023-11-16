@@ -15,7 +15,12 @@ public class Destination extends AuditableEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(
+            name = "destination_waypoints",
+            joinColumns = @JoinColumn(name = "destination_id"),
+            inverseJoinColumns = @JoinColumn(name = "waypoint_id")
+    )
     private List<Waypoint> waypoints;
 
     public String getName() {

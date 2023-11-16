@@ -3,3 +3,19 @@ springdoc:
     path: /swagger
   api-docs:
     path: /swagger-docs
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/traveather_database
+    username: root
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  liquibase:
+    enabled: true
+    drop-first: true
+    change-log: config/master.xml

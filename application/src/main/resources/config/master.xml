@@ -1,0 +1,93 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="create_journey_table" author="unknown">
+        <createTable tableName="journeys">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="external_id" type="uuid"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="description" type="varchar(255)"/>
+            <column name="archived" type="boolean"/>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(255)"/>
+            <column name="modified_by" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_destination_table" author="unknown">
+        <createTable tableName="destinations">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="external_id" type="uuid"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="description" type="varchar(255)"/>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(255)"/>
+            <column name="modified_by" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_journey_destinations_table" author="unknown">
+        <createTable tableName="journey_destinations">
+            <column name="journey_id" type="bigint">
+                <constraints foreignKeyName="fk_journey_destinations_journeys" references="journeys(id)" nullable="false"/>
+            </column>
+            <column name="destination_id" type="bigint">
+                <constraints foreignKeyName="fk_journey_destinations_destinations" references="destinations(id)" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_waypoint_table" author="unknown">
+        <createTable tableName="waypoints">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="external_id" type="uuid"/>
+            <column name="description" type="varchar(255)"/>
+            <column name="longitude" type="decimal(10, 6)"/>
+            <column name="latitude" type="decimal(10, 6)"/>
+            <column name="country" type="varchar(255)"/>
+            <column name="region" type="varchar(255)"/>
+            <column name="city" type="varchar(255)"/>
+            <column name="street" type="varchar(255)"/>
+            <column name="info" type="varchar(255)"/>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(255)"/>
+            <column name="modified_by" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_destination_waypoints_table" author="unknown">
+        <createTable tableName="destination_waypoints">
+            <column name="destination_id" type="bigint">
+                <constraints foreignKeyName="fk_destination_waypoints_destinations" references="destinations(id)" nullable="false"/>
+            </column>
+            <column name="waypoint_id" type="bigint">
+                <constraints foreignKeyName="fk_destination_waypoints_waypoints" references="waypoints(id)" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
