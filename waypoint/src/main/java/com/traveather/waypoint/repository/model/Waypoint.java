@@ -1,7 +1,6 @@
-package com.traveather.destination.repository.model;
+package com.traveather.waypoint.repository.model;
 
 import com.traveather.common.entity.AuditableEntity;
-import com.traveather.destination.repository.model.Destination;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -19,7 +18,7 @@ public class Waypoint extends AuditableEntity {
     @Column(name = "latitude")
     private BigDecimal latitude;
 
-    @Column(name = "counter")
+    @Column(name = "country")
     private String country;
 
     @Column(name = "region")

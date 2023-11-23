@@ -24,8 +24,8 @@ public interface DestinationMapper {
     @Mapping(target = "waypoints", ignore = true)
     com.traveather.destination.repository.model.Destination asEntity(Destination destination);
 
-    default List<Destination> asListDto(List<com.traveather.destination.repository.model.Destination> destinationList) {
-        return destinationList.stream()
+    default List<Destination> asListDto(List<com.traveather.destination.repository.model.Destination> destinations) {
+        return destinations.stream()
                 .map(this::asDto)
                 .collect(Collectors.toList());
     }

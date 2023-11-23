@@ -10,22 +10,14 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>destination</artifactId>
+    <artifactId>waypoint</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>com.traveather</groupId>
             <artifactId>common</artifactId>
             <version>${project.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.traveather</groupId>
-            <artifactId>waypoint</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -43,8 +35,8 @@
                             <generatorName>spring</generatorName>
                             <library>spring-boot</library>
                             <configOptions>
-                                <apiPackage>${project.groupId}.destination.api</apiPackage>
-                                <modelPackage>${project.groupId}.destination.api.model</modelPackage>
+                                <apiPackage>${project.groupId}.waypoint.api</apiPackage>
+                                <modelPackage>${project.groupId}.waypoint.api.model</modelPackage>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
                                 <java17>true</java17>
                                 <interfaceOnly>true</interfaceOnly>

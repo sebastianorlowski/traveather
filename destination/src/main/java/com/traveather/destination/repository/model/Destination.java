@@ -1,6 +1,7 @@
 package com.traveather.destination.repository.model;
 
 import com.traveather.common.entity.AuditableEntity;
+import com.traveather.waypoint.repository.model.Waypoint;
 import jakarta.persistence.*;
 
 import java.util.List;

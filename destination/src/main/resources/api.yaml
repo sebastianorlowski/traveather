@@ -32,11 +32,12 @@ paths:
               example:
                   id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
                   name: 'destination_name'
-                  createdAt:
-                  createdBy:
-                  modifiedAt:
-                  archived:
-                  description:
+                  createdAt: '2022-10-22T23:00:01Z'
+                  createdBy: 'admin'
+                  modifiedAt: '2022-10-22T23:00:01Z'
+                  modifiedBy: 'admin'
+                  archived: 'false'
+                  description: 'text'
                   waypoint:
                     - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
                       name: 'waypoint_name'
@@ -77,11 +78,12 @@ paths:
               example:
                 id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
                 name: 'destination_name'
-                createdAt:
-                createdBy:
-                modifiedAt:
-                archived:
-                description:
+                createdAt: '2022-10-22T23:00:01Z'
+                createdBy: 'admin'
+                modifiedAt: '2022-10-22T23:00:01Z'
+                modifiedBy: 'admin'
+                archived: 'false'
+                description: 'testest'
                 waypoint:
                   - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
                     name: 'waypoint_name'
@@ -119,11 +121,12 @@ paths:
             example:
               id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
               name: 'destination_name'
-              createdAt:
-              createdBy:
-              modifiedAt:
-              archived:
-              description:
+              createdAt: '2022-10-22T23:00:01Z'
+              createdBy: 'admin'
+              modifiedAt: '2022-10-22T23:00:01Z'
+              modifiedBy: 'admin'
+              archived: 'false'
+              description: 'text'
               waypoint:
                 - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
                   name: 'waypoint_name'
@@ -162,11 +165,12 @@ paths:
             example:
               id: '3c5ec55f-3025-46e9-9001-6fbf86fbd515'
               name: 'destination_name'
-              createdAt:
-              createdBy:
-              modifiedAt:
-              archived:
-              description:
+              createdAt: '2022-10-22T23:00:01Z'
+              createdBy: 'admin'
+              modifiedAt: '2022-10-22T23:00:01Z'
+              modifiedBy: 'admin'
+              archived: 'false'
+              description: 'text'
               waypoint:
                 - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
                   name: 'waypoint_name'

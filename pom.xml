@@ -18,6 +18,7 @@
         <module>application</module>
         <module>destination</module>
         <module>identity_provider</module>
+        <module>waypoint</module>
     </modules>
 
     <groupId>com.traveather</groupId>
@@ -72,6 +73,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
 
         <!-- Parent dependencies -->

@@ -1,0 +1,214 @@
+openapi: 3.0.1
+
+servers:
+  - url: /api/v1
+
+info:
+  description: 'module: Waypoint'
+  version: '1.0.0'
+  title: 'Traveather'
+
+tags:
+  - name: Waypoint
+    description: Waypoints management
+
+paths:
+  /waypoints/list:
+    get:
+      operationId: retrieveWaypointsList
+      summary: Retrieve waypoints list
+      description: It will return all waypoints assigned to sign in user
+      tags:
+        - Waypoint
+      responses:
+        200:
+          description: Waypoints list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Waypoint'
+              example:
+                - id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+                  name: 'waypoint_name'
+                  description: 'description_waypoint'
+                  latitude: 54.372158
+                  longitude: 18.638306
+                  country: 'Poland'
+                  region: 'Pomeranian'
+                  city: 'Gdansk'
+                  street: 'Grunwaldzka'
+                  info: 'this is info'
+                  items:
+                    - id: 'item_id'
+                      name: 'name'
+                      description: 'description'
+
+  /waypoints/{id}:
+    get:
+      operationId: retrieveWaypoint
+      summary: Retrieve waypoint
+      description: It will return specified waypoint by id.
+      tags:
+        - Waypoint
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            example: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+      responses:
+        200:
+          description: Waypoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Waypoint'
+              example:
+                id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+                name: 'waypoint_name'
+                description: 'description_waypoint'
+                latitude: 54.372158
+                longitude: 18.638306
+                country: 'Poland'
+                region: 'Pomeranian'
+                city: 'Gdansk'
+                street: 'Grunwaldzka'
+                info: 'this is info'
+                items:
+                  - id: 'item_id'
+                    name: 'name'
+                    description: 'description'
+
+    put:
+      operationId: updateOrCreateWaypoint
+      summary: Update or create waypoint
+      description: Waypoint will be updated in case when id exists, otherwise it will create a new one.
+      tags:
+        - Waypoint
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            example: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Waypoint'
+            example:
+              id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+              name: 'waypoint_name'
+              description: 'description_waypoint'
+              latitude: 54.372158
+              longitude: 18.638306
+              country: 'Poland'
+              region: 'Pomeranian'
+              city: 'Gdansk'
+              street: 'Grunwaldzka'
+              info: 'this is info'
+              items:
+                - id: 'item_id'
+                  name: 'name'
+                  description: 'description'
+      responses:
+        200:
+          description: Successfully updated or created waypoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Waypoint'
+
+  /waypoints:
+    post:
+      operationId: createWaypoint
+      summary: Create Waypoint
+      description: It will create a waypoint if some validation requirements are correct.
+      tags:
+        - Waypoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Waypoint'
+            example:
+              id: '0c324580-cb3c-4def-bf05-cd6ee6487207'
+              name: 'waypoint_name'
+              description: 'description_waypoint'
+              latitude: 54.372158
+              longitude: 18.638306
+              country: 'Poland'
+              region: 'Pomeranian'
+              city: 'Gdansk'
+              street: 'Grunwaldzka'
+              info: 'this is info'
+              items:
+                - id: 'item_id'
+                  name: 'name'
+                  description: 'description'
+      responses:
+        200:
+          description: Successfully created waypoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Waypoint'
+
+components:
+  schemas:
+    Waypoint:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: string
+          maxLength: 64
+        name:
+          type: string
+          maxLength: 128
+        description:
+          type: string
+          maxLength: 1024
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        country:
+          type: string
+          maxLength: 128
+        region:
+          type: string
+          maxLength: 128
+        city:
+          type: string
+          maxLength: 128
+        street:
+          type: string
+          maxLength: 128
+        info:
+          type: string
+          maxLength: 1024
+        items:
+          $ref: '#/components/schemas/Item'
+
+    Item:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: string
+          maxLength: 64
+        name:
+          type: string
+          maxLength: 128
+        description:
+          type: string
+          maxLength: 1024
