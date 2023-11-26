@@ -22,8 +22,13 @@ spring:
     user: root
     password: password
     url: jdbc:mysql://localhost:3306/traveather_database
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+
+springwolf:
+  docket:
+    base-package: com.traveather
+    info:
+      title: ${spring.application.name}
+      version: 1.0.0
+    servers:
+      rabbitmq:
+        protocol: rabbitmq

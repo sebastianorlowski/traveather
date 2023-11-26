@@ -27,13 +27,13 @@ public class DestinationService {
     }
 
     public Destination createOrUpdateDestination(String id, Destination destinationDto) {
-        return destinationRepository.findDestinationByExternalId(UUID.fromString(id))
+        return destinationRepository.findDestinationByExternalId(id)
                 .map(destinationEntity -> updateDestination(destinationDto, destinationEntity))
                 .orElseGet(() -> createDestination(destinationDto));
     }
 
     public Destination retrieveDestinationById(String id) {
-        return destinationRepository.findDestinationByExternalId(UUID.fromString(id))
+        return destinationRepository.findDestinationByExternalId(id)
                 .map(destinationMapper::asDto)
                 .orElseThrow(() -> new RuntimeException("Destination with id {} not found."));
     }

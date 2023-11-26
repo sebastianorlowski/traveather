@@ -10,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface JourneyRepository extends JpaRepository<Journey, Long> {
 
-    Optional<Journey> findJourneyByExternalId(UUID externalId);
+    Optional<Journey> findJourneyByExternalId(String externalId);
 }

@@ -10,16 +10,12 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="external_id" type="uuid"/>
+            <column name="external_id" type="varchar(64)"/>
             <column name="name" type="varchar(255)"/>
             <column name="description" type="varchar(255)"/>
             <column name="archived" type="boolean"/>
-            <column name="created_at" type="timestamp">
-                <constraints nullable="false"/>
-            </column>
-            <column name="modified_at" type="timestamp">
-                <constraints nullable="false"/>
-            </column>
+            <column name="created_at" type="timestamp"/>
+            <column name="modified_at" type="timestamp"/>
             <column name="created_by" type="varchar(255)"/>
             <column name="modified_by" type="varchar(255)"/>
         </createTable>
@@ -30,15 +26,11 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="external_id" type="uuid"/>
+            <column name="external_id" type="varchar(64)"/>
             <column name="name" type="varchar(255)"/>
             <column name="description" type="varchar(255)"/>
-            <column name="created_at" type="timestamp">
-                <constraints nullable="false"/>
-            </column>
-            <column name="modified_at" type="timestamp">
-                <constraints nullable="false"/>
-            </column>
+            <column name="created_at" type="timestamp"/>
+            <column name="modified_at" type="timestamp"/>
             <column name="created_by" type="varchar(255)"/>
             <column name="modified_by" type="varchar(255)"/>
         </createTable>
@@ -60,7 +52,7 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="external_id" type="uuid"/>
+            <column name="external_id" type="varchar(64)"/>
             <column name="description" type="varchar(255)"/>
             <column name="longitude" type="decimal(10, 6)"/>
             <column name="latitude" type="decimal(10, 6)"/>
@@ -69,12 +61,8 @@
             <column name="city" type="varchar(255)"/>
             <column name="street" type="varchar(255)"/>
             <column name="info" type="varchar(255)"/>
-            <column name="created_at" type="timestamp">
-                <constraints nullable="false"/>
-            </column>
-            <column name="modified_at" type="timestamp">
-                <constraints nullable="false"/>
-            </column>
+            <column name="created_at" type="timestamp"/>
+            <column name="modified_at" type="timestamp"/>
             <column name="created_by" type="varchar(255)"/>
             <column name="modified_by" type="varchar(255)"/>
         </createTable>

@@ -10,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface DestinationRepository extends JpaRepository<Destination, Long> {
 
-    Optional<Destination> findDestinationByExternalId(UUID externalId);
+    Optional<Destination> findDestinationByExternalId(String externalId);
 }

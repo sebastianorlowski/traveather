@@ -10,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface WaypointRepository extends JpaRepository<Waypoint, Long> {
 
-    Optional<Waypoint> findWaypointByExternalId(UUID externalId);
+    Optional<Waypoint> findWaypointByExternalId(String externalId);
 }

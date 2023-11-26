@@ -13,7 +13,7 @@ public abstract class BaseEntity {
     private Long id;
 
     @Column(name = "external_id")
-    private UUID externalId;
+    private String externalId;
 
     public Long getId() {
         return id;
@@ -23,18 +23,18 @@ public abstract class BaseEntity {
         this.id = id;
     }
 
-    public UUID getExternalId() {
+    public String getExternalId() {
         return externalId;
     }
 
-    public void setExternalId(UUID externalId) {
+    public void setExternalId(String externalId) {
         this.externalId = externalId;
     }
 
     @PrePersist
     private void prePersist() {
         if (this.externalId == null) {
-            this.externalId = UUID.randomUUID();
+            this.externalId = String.valueOf(UUID.randomUUID());
         }
     }
 }

@@ -28,13 +28,13 @@ public class JourneyService {
     }
 
     public Journey createOrUpdateJourney(String id, Journey journeyDto) {
-        return journeyRepository.findJourneyByExternalId(UUID.fromString(id))
+        return journeyRepository.findJourneyByExternalId(id)
                 .map(journeyEntity -> updateJourney(journeyDto, journeyEntity))
                 .orElseGet(() -> createJourney(journeyDto));
     }
 
     public Journey retrieveJourneyById(String id) {
-        return journeyRepository.findJourneyByExternalId(UUID.fromString(id))
+        return journeyRepository.findJourneyByExternalId(id)
                 .map(journeyMapper::asDto)
                 .orElseThrow(() -> new RuntimeException("Journey with id {} not found."));
     }
