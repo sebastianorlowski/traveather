@@ -3,22 +3,18 @@ package com.traveather.journey.api;
 import com.traveather.journey.api.model.Journey;
 import com.traveather.journey.api.validation.JourneyValidator;
 import com.traveather.journey.service.JourneyService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 public class JourneyController implements JourneyApi {
 
     private final JourneyService journeyService;
     private final JourneyValidator journeyValidator;
-
-    public JourneyController(JourneyService journeyService,
-                             JourneyValidator journeyValidator) {
-        this.journeyService = journeyService;
-        this.journeyValidator = journeyValidator;
-    }
 
     @Override
     public ResponseEntity<Journey> createJourney(Journey journey) {

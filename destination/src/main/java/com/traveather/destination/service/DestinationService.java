@@ -3,22 +3,18 @@ package com.traveather.destination.service;
 import com.traveather.destination.api.model.Destination;
 import com.traveather.destination.repository.DestinationRepository;
 import com.traveather.destination.service.mapper.DestinationMapper;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@AllArgsConstructor
 public class DestinationService {
-
 
     private final DestinationRepository destinationRepository;
     private final DestinationMapper destinationMapper;
-
-    public DestinationService(DestinationRepository destinationRepository, DestinationMapper destinationMapper) {
-        this.destinationRepository = destinationRepository;
-        this.destinationMapper = destinationMapper;
-    }
 
     public Destination createDestination(Destination destination) {
         var destinationEntity = destinationMapper.asEntity(destination);

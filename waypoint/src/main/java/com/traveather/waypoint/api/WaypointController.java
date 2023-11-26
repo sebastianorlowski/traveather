@@ -2,6 +2,7 @@ package com.traveather.waypoint.api;
 
 import com.traveather.waypoint.api.model.Waypoint;
 import com.traveather.waypoint.service.WaypointService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,13 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class WaypointController implements WaypointsApi{
+@AllArgsConstructor
+public class WaypointController implements WaypointsApi {
 
     private final WaypointService waypointService;
-
-    public WaypointController(WaypointService waypointService) {
-        this.waypointService = waypointService;
-    }
 
     @Override
     public ResponseEntity<Waypoint> createWaypoint(@RequestBody Waypoint waypoint) {

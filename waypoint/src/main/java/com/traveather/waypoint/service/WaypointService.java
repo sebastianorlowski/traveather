@@ -3,22 +3,18 @@ package com.traveather.waypoint.service;
 import com.traveather.waypoint.api.model.Waypoint;
 import com.traveather.waypoint.repository.WaypointRepository;
 import com.traveather.waypoint.service.mapper.WaypointMapper;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@AllArgsConstructor
 public class WaypointService {
 
     private final WaypointRepository waypointRepository;
     private final WaypointMapper waypointMapper;
-
-    public WaypointService(WaypointRepository waypointRepository,
-                           WaypointMapper waypointMapper) {
-        this.waypointRepository = waypointRepository;
-        this.waypointMapper = waypointMapper;
-    }
 
     public Waypoint createWaypoint(Waypoint waypoint) {
         var waypointEntity = waypointMapper.asEntity(waypoint);

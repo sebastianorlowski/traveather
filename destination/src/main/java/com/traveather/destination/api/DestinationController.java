@@ -2,19 +2,17 @@ package com.traveather.destination.api;
 
 import com.traveather.destination.api.model.Destination;
 import com.traveather.destination.service.DestinationService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 public class DestinationController implements DestinationApi {
 
     private final DestinationService destinationService;
-
-    public DestinationController(DestinationService destinationService) {
-        this.destinationService = destinationService;
-    }
 
     @Override
     public ResponseEntity<Destination> createDestination(Destination destination) {
