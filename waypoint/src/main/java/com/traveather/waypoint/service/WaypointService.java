@@ -1,7 +1,9 @@
 package com.traveather.waypoint.service;
 
+import com.traveather.common.messaging.RabbitMQProducer;
 import com.traveather.waypoint.api.model.Waypoint;
 import com.traveather.waypoint.repository.WaypointRepository;
+import com.traveather.waypoint.service.event.WaypointEvent;
 import com.traveather.waypoint.service.mapper.WaypointMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,11 +17,13 @@ public class WaypointService {
 
     private final WaypointRepository waypointRepository;
     private final WaypointMapper waypointMapper;
+    private final WaypointEvent waypointEvent;
 
     public Waypoint createWaypoint(Waypoint waypoint) {
         var waypointEntity = waypointMapper.asEntity(waypoint);
         var createdWaypoint = waypointRepository.save(waypointEntity);
         Waypoint waypointDto = waypointMapper.asDto(createdWaypoint);
+        waypointEvent.publishOnCreate(waypointDto);
         return waypointDto;
     }
 
