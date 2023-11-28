@@ -33,6 +33,10 @@ public class Waypoint extends AuditableEntity {
     @Column(name = "info")
     private String info;
 
+    @ManyToOne
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country countryInfo;
+
     public String getDescription() {
         return description;
     }
@@ -55,10 +59,6 @@ public class Waypoint extends AuditableEntity {
 
     public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
-    }
-
-    public String getCountry() {
-        return country;
     }
 
     public void setCountry(String country) {
@@ -97,4 +97,15 @@ public class Waypoint extends AuditableEntity {
         this.info = info;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public Country getCountryInfo() {
+        return countryInfo;
+    }
+
+    public void setCountryInfo(Country countryInfo) {
+        this.countryInfo = countryInfo;
+    }
 }

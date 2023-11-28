@@ -78,4 +78,16 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="create_country_table" author="unknown">
+        <createTable tableName="countries">
+            <column name="name" type="varchar(128)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="capital" type="varchar(128)"/>
+            <column name="area" type="bigint"/>
+            <column name="population" type="bigint"/>
+            <column name="currency" type="varchar(128)"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
